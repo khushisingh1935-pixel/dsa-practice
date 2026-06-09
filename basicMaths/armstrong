@@ -1,0 +1,17 @@
+int main(){
+    int n; 
+    cin>>n;
+    int sum = 0;
+    int dup = n;
+    while(n>0){
+        int lastDigit = n%10;
+        sum = sum + (lastDigit*lastDigit*lastDigit);
+        n = n/10;
+    }
+    if(dup==sum){
+        cout<<"true"<<endl;
+    }
+    else{
+        cout<<"false"<<endl;
+    }
+}
