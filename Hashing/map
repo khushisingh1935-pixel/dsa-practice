@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+int n;
+cin>>n; //size of array 
+int arr[n];
+for(int i = 0; i<n; i++){
+    cin>>arr[n]; //input array
+}
+//pre compute 
+map<int, int> mpp; //map to store the frequency of elements in the input array
+for(int i = 0; i<n; i++){
+    map[arr[i]]++; //increment the frequency of the element in the map
+}
+int q; 
+cin>>q; //number of queries
+while(q--){
+    int number; 
+    cin>>number; //number to be searched in the input array
+    //fetch 
+    cout<<map[number]<<endl; //print the frequency of the number in array
+}
