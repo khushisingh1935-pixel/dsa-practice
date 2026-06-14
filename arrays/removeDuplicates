@@ -1,0 +1,22 @@
+//CHECK IF GIVEN ARRAY IS SORTED OR NOT
+#include<iostream>
+using namespace std;
+bool isSorted(int arr[], int n){
+    for(int i = 1; i<n; i++){
+        if(arr[i] < arr[i-1]){
+            return false;
+        }
+    }
+    return true;
+}
+//REMOVE DUPLICATES FROM SORTED ARRAY
+int removeDuplicates(int arr[], int n){
+    int i = 0; //points to last unique element
+    for(int j = 0; j<n; j++){
+        if (arr[i] != arr[j]){
+            i++;
+            arr[i] = arr[j];
+        }
+    }
+    return i+1; //returning the length of unique array
+}
