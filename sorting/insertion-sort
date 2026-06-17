@@ -1,0 +1,9 @@
+//Insertion sort: 
+/*
+Start with 2nd element as first, 1st is assumed to be sorted 
+compare 2nd with 1st, if 2nd is sammler, swap them
+move to 3rd, compare with first two, and put in correct
+repeat the process for n-1 times
+*/
+#include <iostream>
+using namespace std;
