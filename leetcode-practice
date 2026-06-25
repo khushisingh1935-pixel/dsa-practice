@@ -468,3 +468,342 @@ int missingNumber(vector<int>& nums) {
         if()
     }
 }
+//happy number
+class Solution {
+public:
+    bool isHappy(int n) {
+
+        unordered_set<int> seen;
+
+        while(n != 1) {
+
+            if(seen.count(n))
+                return false;
+
+            seen.insert(n);
+
+            int sum = 0;
+
+            while(n > 0) {
+                int digit = n % 10;
+                sum += digit * digit;
+                n /= 10;
+            }
+
+            n = sum;
+        }
+
+        return true;
+    }
+};
+//CONTAINS DUPLICATE
+bool containsNearbyDuplicate(vector<int>& nums, int k) {
+    for(int i = 0; i<nums.size(); i++){
+        for(int j = i + 1; j<nums.size(); j++){
+            if(num[j] == num[i] && abs(i - j) <= k){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+//^^TLE 
+bool containsNearbyDuplicate(vector<int>& nums, int k){
+unordered_map<int, int> hash;
+for(int i = 0; i<nums.size(); i++){
+   if(hash.count[nums[i]] && i - hask[nums[i]] <= k)
+   return true;
+   hash[nums[i]] = i;
+}
+return false;
+}
+//KEYBOARD ROW
+vector<string> findWords(vector<string>& words) {
+    vector<string>& firstRow = "qwertyuiop";
+    vector<string>& secondRow = "asdfghjkl";
+    vector<string>& thirdRow = "zxcvbnm";
+    string output[];
+    for(int i = 0; i<words.length(); i++){
+        if(words[i] == firstRow[i] || words[i] == secondRow[i] ||words[i] == thirdRow[i]){
+            words[i] = output[];
+        }
+    }
+    return output;
+}
+//plus one
+vector<int> plusOne(vector<int>& digits) {
+    //arrys -> number 
+    vector<int> n;
+    for(auto digit : digits){
+        n.push_back(digit);
+    }
+    //extract last digits
+    vector<int> sum;
+    while(n>0){
+        int lastDigit = n % 10;
+        sum.push_back(lastDigits);
+        n = n / 10;
+    }
+    int number = (reverse(sum.begin(), sum.end())) + 1;
+    // number -> arrays
+    vector<int> output;
+    while(number > 0){
+        int last = number % 10;
+        output.push_back(last);
+        num = num / 10;
+    }
+    return output;
+}
+//^^no
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+
+        for(int i = digits.size()-1; i >= 0; i--){
+
+            if(digits[i] < 9){
+                digits[i]++;
+                return digits;
+            }
+
+            digits[i] = 0;
+        }
+
+        digits.insert(digits.begin(), 1);
+
+        return digits;
+    }
+};
+string removeDuplicates(string s){
+    unordered_map<char, char> hash;
+    vector<string> output;
+    for(int i = 0; i<s.length(); i++){
+        for(int j = i + 1; j<s.length(); j++){
+            if(hash.count[s[i]] && (s[j] - s[i] = 1)){
+               output.erase(s[j], s[i]);
+            }
+        }
+    }
+    return output;
+}
+//length of last word
+int lengthOfLastWod(string s){
+    int word = 0;
+    int i = s.size() - 1;
+    while(i >= 0 && s[i] == ' '){
+        i--;
+    }
+    while(i >= 0 && s[i] == ' '){
+        word++;
+        i--;
+    }
+    return word;
+}
+//no of unique occurences 
+bool uniqueOccurrences(vector<int>& arr) {
+    unordered_map<int, int> hash;
+    for(int i = 0; i<arr.size(); i++){
+        for(int j = i + 1; j<arr.size(); j++){
+         if(hash[arr[i]] == hash[arr[j]]){
+            return false;
+         }
+        }
+    }
+    return true;
+}
+//
+int majorityElement(vector<int>& nums) {
+        unordered_map<int, int> hash;
+        for(int i = 0; i<nums.size(); i++){
+            hash[nums[i]]++;
+        }
+        for(int i = 0; i<nums.size(); i++){
+            if(hash[nums[i]] > nums / 2){
+                return num[i];
+            }
+        }
+        return -1;
+    }
+//PIVOT INDEX(O(n2))
+int pivotIndex(vector<int>& nums) {
+    for(int i = 0; i<nums.size(); i++){
+       int left = 0;
+       for(int j = i-1; j>= 0; j--){
+        left += nums[j];
+        return left;
+       }
+       int right = 0;
+       for(int k = i + 1; k<nums.size(); k++){
+        right += nums[k];
+        return right;
+       }
+        if(left == right) return num[i];
+    }
+    return -1;
+}
+///^^ now o(n) solution prefix sum
+int pivotIndex(vector<int>& nums) {
+    int total = 0;
+    for(int num : nums){
+        total += num;
+    }
+    int left = 0; 
+    for(int i = 0; i < nums.size(); i++){
+        int right = total - left - nums[i];
+        if(left == right){
+            return i;
+        }
+        left += nums[i];
+    }
+    return -1;
+}
+//747. Largest Number At Least Twice of Others
+int dominantIndex(vector<int>& nums) {
+    for(int i = 0; i<nums.size(); i++){
+        for(int j = 0; j<nums.size(); j++){
+            if(nums[i] >= 2 * nums[j]) return i;
+        }
+    }
+    return -1;
+}// no
+int dominantIndex(vector<int>& nums) {
+    for(int i = 0; i<nums.size(); i++){
+        bool ok = true;
+    for(int j = 0; j<nums.size(); j++){
+        if(i == j)
+        continue;
+        if(nums[i] >= 2 * nums[j]){
+            ok = false;
+            break;
+        }
+    }
+    if(ok)
+    return i;
+}
+return -1
+}
+//REVERSE STRING
+//two pointer
+void reverseString(vector<char>& s) {
+    int left = 0; 
+    int right = s.size() -1;
+    while(left <= right){
+        swap(s[left], s[right]);
+        left++;
+        right--;
+    }
+}
+//LAST STONE WEIGHT
+int lastStoneWeight(vector<int>& stones) {
+    int y = stones[0];
+    int x = stones[0];
+    for(int i = 0; i<stones.size(); i++){
+        if(stones[i] > largest){
+            y = stones[i];
+        }
+        else if(stones[i] > secondLargest && secondLargest < largest){
+            x = stones[i];
+        }
+    }
+    for(int i = 0; i<stones.size(); i++){
+    if(x == y){
+        return 0;
+    }
+    if(x != y){
+        y = y - x;
+    }
+    return y;
+}
+}
+//^^NO NO WRONG 
+//PRIORITY QUEUE
+int lastStoneWeight(vector<int>& stones) {
+    priority_queue<int> pq;
+    for(int stone : stones){
+        pq.push(stones);
+    }
+    while(pq.size() > 1){
+        int y = pq.top();
+        pq.pop();
+        int x = pq.top();
+        pq.pop();
+        if( y != x ){
+            pq.push(y - x);
+        }
+    }
+    if(pq.empty()){
+        return 0;
+    }
+    return pq.top();
+}
+//RELATIVE RANKS
+vector<string> findRelativeRanks(vector<int>& score) {
+    vector<string> ans;
+    priority_queue<int> pq;
+    for(int score : scores){
+        pq.push(score);
+    }
+    string "Gold Medal" = pq.top();
+    pq.pop();
+    ans.push_back("Gold Medal");
+    string "Silver Medal" = pq.top();
+    pq.pop();
+    ans.push_back("Silver Medal");
+    string "Bronze Medal" = pq.top();
+    pq.pop();
+    ans.push_back("Bronze Medal");
+    for(int i = pq.top(); i<score.size(); i++){
+        i = ith position
+    }
+}//NOOO
+vector<string> findRelativeRanks(vector<int>& score) {
+    int n = score.size();
+    priority_queue<pair<int, int>> pq;
+    for(int i = 0; i<n; i++){
+        pq.push({score[i], i});
+    }
+    int rank = 1;
+    while(!pq.empty()){
+        int index = pq.top().second;
+        pq.pop();
+        if(rank == 1){
+            ans[index] = "Gold Medal";
+        }else if(rank == 2){
+            ans[index] == "Silver Medal";
+        }else if(rank == 3){
+            ans[index] == "Bronze Medal";
+        }else{
+            ans[index] = to_string(rank);
+        }
+        rank++;
+    }
+    return ans;
+}
+//MAXIMUM PRODUCT OF 3 NOS
+ int maximumProduct(vector<int>& nums) {
+    priority_queue<int> pq;
+    for(int num : nums){
+        pq.push(num);
+    }
+    if(pq.size = 3){
+       return num[0] * num[1] * num[2];
+    }
+    while(!pq.empty()){
+        int x = pq.top();
+        pq.pop();
+        int y = pq.top();
+        pq.pop();
+        int z = pq.top;
+        pq.pop();
+        int Product = (x * y * z);
+    }
+    return Product;
+ }//NO^^
+ int maximumProduct(vector<int>& nums) {
+    sort(nums.begin(), nums.end());
+    int n = nums.size();
+    max(
+        nums[n-1] * nums[n-2] * nums[n-3],
+        nums[0] * nums[1] * nums[n-1]
+    );
+ }
