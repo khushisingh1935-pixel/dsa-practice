@@ -807,3 +807,127 @@ vector<string> findRelativeRanks(vector<int>& score) {
         nums[0] * nums[1] * nums[n-1]
     );
  }
+ //BACKSPACE STRING COMPARE
+ bool backspaceCompare(string s, string t) {
+    stack<char> ans1;
+    stack<char> ans2;
+    for(int i = 0; i< s.length(); i++){
+        if(s[i] == '#') {
+            s.erase(s[i-1]);
+        }
+        ans1.push(s[i]);
+    }
+    reverse(ans1.begin(), ans1.end());
+    for(int i = 0; i< t.length(); i++){
+        if(t[i] == '#'){
+            t.erase(t[i-1]);
+        }
+        ans2.push(t[i]);
+    }
+    reverse(ans2.begin(), ans2.end());
+    if(ans1 == ans2) return true;
+ }//no
+ bool backspaceCompare(string s, string t) {
+    stack<char> st1;
+    stack<char> st2;
+    for(char c : s){
+        if(c != '#'){
+            st.push(c);
+        }else if(!st1.empty()){
+            st1.pop();
+        }
+    }
+    for(char c : t){
+        if(t != '#'){
+            st2.push(t);
+        }else if(!st2.empty()){
+            st2.pop();
+        }
+    }
+    return st1 == st2;
+ }
+ //682. Baseball Game
+ int calPoints(vector<string>& operations) {
+    stack<int> st;
+    for(char op : operations){
+        if(op == '+' && operations.length() > 1){
+            int x = st.top();
+            int y = st.top();
+            int z = x + y;
+            st.push(z);
+        }
+        else if(op == 'D' && operations.length() >= 1){
+            int a = st.top();
+            int b = a * 2;
+            st.push(b);
+        }
+        else if(op == 'C' && operations.length() >= 1){
+            st.pop();
+        }
+        st.push(op);
+    }
+    int sum = 0;
+    for(int i = 0; i<st.length(); i++){
+        while(!st.empty()){
+            int x = st.top();
+            st.pop();
+            sum += x;
+        }
+    }
+    return sum;
+ }
+ //448. Find All Numbers Disappeared in an Array
+ vector<int> findDisappearedNumbers(vector<int>& nums) {
+    set<int> st;
+    vector<int> ans;
+    for(int num : nums){
+        st.insert(num);
+    }
+    for(int i = 1; i<=nums.size(); i++){
+        if(st.count(i) == 0){
+            ans.push_back(i);
+        }
+    }
+    return ans;
+ }
+ //2215. Find the Difference of Two Arrays
+ vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2) {
+
+    set<int> s1;
+    set<int> s2;
+
+    vector<int> first;
+    vector<int> second;
+
+    for(int num1 : nums1){
+        s1.insert(num1);
+    }
+
+    for(int num2 : nums2){
+        s2.insert(num2);
+    }
+
+    for(int num : s1){
+
+        if(s2.count(num) == 0){
+            first.push_back(num);
+        }
+
+    }
+
+    for(int num : s2){
+
+        if(s1.count(num) == 0){
+            second.push_back(num);
+        }
+
+    }
+
+    vector<vector<int>> ans;
+
+    ans.push_back(first);
+    ans.push_back(second);
+
+    return ans;
+}
+//DISTRIBUTED CANDIES
